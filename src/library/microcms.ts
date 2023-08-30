@@ -6,6 +6,21 @@ const client = createClient({
 });
 
 //型定義
+type Tag = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  name: string;
+};
+
+type Eyecatch = {
+  url: string;
+  height: number;
+  width: number;
+};
+
 export type Blog = {
   id: string;
   createdAt: string;
@@ -14,6 +29,8 @@ export type Blog = {
   revisedAt: string;
   title: string;
   content: string;
+  eyecatch: Eyecatch[];
+  tag: Tag[];
 };
 export type BlogResponse = {
   totalCount: number;

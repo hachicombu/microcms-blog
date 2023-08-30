@@ -14,14 +14,37 @@ export async function getStaticPaths() {
 
 //記事の詳細情報を取得
 const { blogId } = Astro.params;
-const blog = await getBlogDetail(blogId as string);
+const blog = await getBlogDetail(blogId);
+
+// 日付フォーマット yyyy/mm/ddに
+const date = new Date(blog.publishedAt).toLocaleDateString("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+
+const defaulImageUrl = "https://images.microcms-assets.io/assets/0b89977f9d5f4144814724edd44d8495/a2fe2ce8aa204aae9fb615b29c89ce5c/default-eyecatch.jpg";
+
+const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
+
+// console.log(blog);
 ---
 
 <Layout title="My first blog with Astro">
   <main>
+    <img width="1200" height="630" src={imageUrl} alt="" />
     <h1 class="title">{blog.title}</h1>
-    <p class="publishedAt">公開日時：{blog.publishedAt}</p>
+    <p>公開日：<time datetime={blog.publishedAt}>{date}</time></p>
     <div class="post" set:html={blog.content} />
+    {
+      blog.tag && (
+        <div>
+          {blog.tag.map((item) => (
+            <p>{item.name}</p>
+          ))}
+        </div>
+      )
+    }
   </main>
 </Layout>
 
