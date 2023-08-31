@@ -28,7 +28,7 @@ const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
 
 <Layout title="My first blog with Astro">
   <main>
-    <img width="1200" height="630" src={imageUrl} alt="" />
+    <img width="1200" height="630" src={imageUrl} />
     <h1 class="title">{blog.title}</h1>
     <p>公開日：<time datetime={blog.publishedAt}>{date}</time></p>
     <div class="post" set:html={blog.content} />
@@ -36,7 +36,9 @@ const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
       blog.tag && (
         <div>
           {blog.tag.map((item) => (
-            <p>{item.name}</p>
+            <span>
+              <a href={`/tags/${item.id}`}>{item.name}</a>
+            </span>
           ))}
         </div>
       )
