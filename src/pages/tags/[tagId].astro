@@ -14,12 +14,16 @@ const { tagId } = Astro.params;
 const tagName = Astro.props.tagName;
 const filteredPosts = await getBlogs({
   filters: `tag[contains]${tagId}`,
-  fields: ["id", "title", "eyecatch", "tag"],
+  fields: ["id", "title", "eyecatch", "publishedAt", "tag"],
   orders: "-publishDate",
   limit: 100,
 });
 
-const posts = filteredPosts.contents;
+const blogs = filteredPosts.contents;
+
+// const a = blogs.map((i) => {
+//   console.log(i);
+// });
 ---
 
 <!DOCTYPE html>
@@ -33,23 +37,43 @@ const posts = filteredPosts.contents;
     <h1>{tagName}ブログ一覧</h1>
     {
       // 配列の中身が１以上ある場合
-      posts.length ? (
-        posts.map((post) => (
-          <article>
-            <h2>
-              <a href={`/${post.id}`}>{post.title}</a>
-            </h2>
-            {post.tag && (
-              <div>
-                {post.tag.map((item) => (
-                  <span>
-                    <a href={`/tags/${item.id}`}>{item.name}</a>
-                  </span>
-                ))}
-              </div>
-            )}
-          </article>
-        ))
+      blogs.length ? (
+        blogs.map((blog) => {
+          // アイキャッチの指定
+          const defaulImageUrl = "https://images.microcms-assets.io/assets/0b89977f9d5f4144814724edd44d8495/a2fe2ce8aa204aae9fb615b29c89ce5c/default-eyecatch.jpg";
+
+          const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
+
+          // 日付フォーマット yyyy/mm/ddに
+
+          const date = new Date(blog.publishedAt).toLocaleDateString("ja-JP", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          });
+
+          return (
+            <article>
+              <img width="1200" height="630" src={imageUrl} alt="" />
+              <h2>
+                <a href={`/${blog.id}`}>{blog.title}</a>
+              </h2>
+              <p>
+                <time datetime={blog.publishedAt}>{date}</time>
+              </p>
+
+              {blog.tag && (
+                <div>
+                  {blog.tag.map((item) => (
+                    <span>
+                      <a href={`/tags/${item.id}`}>{item.name}</a>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })
       ) : (
         <p>まだ記事がありません</p>
       )
