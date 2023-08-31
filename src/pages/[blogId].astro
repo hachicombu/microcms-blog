@@ -6,9 +6,7 @@ import { getBlogs, getBlogDetail } from "../library/microcms";
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id"] });
   return response.contents.map((content: any) => ({
-    params: {
-      blogId: content.id,
-    },
+    params: { blogId: content.id },
   }));
 }
 
@@ -26,8 +24,6 @@ const date = new Date(blog.publishedAt).toLocaleDateString("ja-JP", {
 const defaulImageUrl = "https://images.microcms-assets.io/assets/0b89977f9d5f4144814724edd44d8495/a2fe2ce8aa204aae9fb615b29c89ce5c/default-eyecatch.jpg";
 
 const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
-
-// console.log(blog);
 ---
 
 <Layout title="My first blog with Astro">

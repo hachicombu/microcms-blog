@@ -1,0 +1,58 @@
+---
+import { getAllTags, getBlogs } from "../../library/microcms";
+
+export async function getStaticPaths() {
+  // 全タグを取得
+  const allTags = await getAllTags({ fields: ["id", "name"] });
+  return allTags.contents.map((tag: any) => ({
+    params: { tagId: tag.id },
+    props: { tagName: tag.name },
+  }));
+}
+
+const { tagId } = Astro.params;
+const tagName = Astro.props.tagName;
+const filteredPosts = await getBlogs({
+  filters: `tag[contains]${tagId}`,
+  fields: ["id", "title", "eyecatch", "tag"],
+  orders: "-publishDate",
+  limit: 100,
+});
+
+const posts = filteredPosts.contents;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{tagName}ブログ一覧</h1>
+    {
+      // 配列の中身が１以上ある場合
+      posts.length ? (
+        posts.map((post) => (
+          <article>
+            <h2>
+              <a href={`/${post.id}`}>{post.title}</a>
+            </h2>
+            {post.tag && (
+              <div>
+                {post.tag.map((item) => (
+                  <span>
+                    <a href={`/tags/${item.id}`}>{item.name}</a>
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      ) : (
+        <p>まだ記事がありません</p>
+      )
+    }
+  </body>
+</html>

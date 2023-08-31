@@ -50,3 +50,11 @@ export const getBlogDetail = async (contentId: string, queries?: MicroCMSQueries
     queries,
   });
 };
+
+// タグ一覧を取得
+export const getAllTags = async (queries?: MicroCMSQueries) => {
+  return await client.get({
+    endpoint: "tags",
+    queries,
+  });
+};
