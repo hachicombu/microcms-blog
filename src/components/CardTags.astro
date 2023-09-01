@@ -3,7 +3,7 @@ import { Tag } from "../library/microcms";
 const { blog } = Astro.props;
 ---
 
-{
+<!-- Card / BlogDetailのタグリスト -->{
   blog.tag && (
     <div>
       {blog.tag.map((item: Tag) => (

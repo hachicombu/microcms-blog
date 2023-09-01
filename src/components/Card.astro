@@ -1,6 +1,6 @@
 ---
 import { Blog } from "../library/microcms";
-import Tags from "../components/Tags.astro";
+import CardTags from "./CardTags.astro";
 import { getEyecatch, setDateFormat } from "../library/common";
 const { blogs } = Astro.props;
 ---
@@ -22,7 +22,7 @@ const { blogs } = Astro.props;
             <time datetime={blog.publishedAt}>{date}</time>
           </p>
 
-          <Tags blog={blog} />
+          <CardTags blog={blog} />
         </article>
       );
     })

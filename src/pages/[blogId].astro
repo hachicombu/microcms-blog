@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getBlogs, getBlogDetail } from "../library/microcms";
+import { getEyecatch, setDateFormat } from "../library/common";
 
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
@@ -14,19 +15,11 @@ export async function getStaticPaths() {
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId);
 
-// 日付フォーマット yyyy/mm/ddに
-const date = new Date(blog.publishedAt).toLocaleDateString("ja-JP", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
-
-const defaulImageUrl = "https://images.microcms-assets.io/assets/0b89977f9d5f4144814724edd44d8495/a2fe2ce8aa204aae9fb615b29c89ce5c/default-eyecatch.jpg";
-
-const imageUrl = blog.eyecatch ? blog.eyecatch.url : defaulImageUrl;
+const imageUrl = getEyecatch(blog);
+const date = setDateFormat(blog);
 ---
 
-<Layout title="My first blog with Astro">
+<Layout title="My first blog with Astro" isTop={false}>
   <main>
     <img width="1200" height="630" src={imageUrl} />
     <h1 class="title">{blog.title}</h1>

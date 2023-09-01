@@ -1,0 +1,12 @@
+---
+import Card from "./Card.astro";
+import { getBlogs } from "../library/microcms";
+
+const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"] });
+
+// const {blogs} = Astro.props;
+---
+
+<main>
+  <Card blogs={blogs} />
+</main>
