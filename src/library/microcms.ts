@@ -6,7 +6,7 @@ const client = createClient({
 });
 
 //型定義
-type Tag = {
+export type Tag = {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -15,7 +15,7 @@ type Tag = {
   name: string;
 };
 
-type Eyecatch = {
+export type Eyecatch = {
   url: string;
   height: number;
   width: number;

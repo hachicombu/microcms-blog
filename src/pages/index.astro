@@ -1,28 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
-const response = await getBlogs({ fields: ["id", "title"] });
+const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"] });
 ---
 
-<Layout title="My first blog with Astro">
+<Layout title="Top">
   <main>
-    <ul>
-      {
-        response.contents.map((content: any) => (
-          <li>
-            <a href={content.id}>{content.title}</a>
-          </li>
-        ))
-      }
-    </ul>
+    <Card blogs={blogs} />
   </main>
 </Layout>
 
 <style>
   main {
-    margin: auto;
+    /* margin: auto;
     padding: 1em;
-    max-width: 60ch;
+    max-width: 60ch; */
   }
 </style>

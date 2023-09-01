@@ -1,4 +1,16 @@
 ---
+import { Tag } from "../library/microcms";
+const { blog } = Astro.props;
 ---
 
-<!-- タグ一覧 -->
+{
+  blog.tag && (
+    <div>
+      {blog.tag.map((item: Tag) => (
+        <span>
+          <a href={`/tags/${item.id}`}>{item.name}</a>
+        </span>
+      ))}
+    </div>
+  )
+}
