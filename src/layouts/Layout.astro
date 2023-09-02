@@ -25,14 +25,18 @@ const { title, isTop } = Astro.props;
   <body>
     <header>
       <a href="/">
-        {isTop ? <h1>Hachico Log</h1> : <p>Hachico Log</p>}
+        {isTop ? <h1>Hachico Log</h1> : <p class="header__logo">Hachico Log</p>}
       </a>
     </header>
     <slot />
     <footer>
-      <TagList />
-      <Sns />
-      <small>&copy; 2023 Hachi Web</small>
+      <div class="footer__inner">
+        <TagList />
+        <Sns />
+      </div>
+      <p class="footer__copy">
+        <small>&copy; 2023 Hachi Web</small>
+      </p>
     </footer>
   </body>
 </html>
@@ -43,9 +47,24 @@ const { title, isTop } = Astro.props;
     background-color: antiquewhite;
   }
   h1,
-  p {
+  .header__logo {
     font-size: 1.6rem;
     padding: 12px 0;
     letter-spacing: 0.08rem;
+  }
+  footer {
+    background: #c9c9d4;
+    padding-top: 32px;
+  }
+  .footer__inner {
+    max-width: 1080px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__copy {
+    padding: 48px 0 24px;
+    text-align: center;
   }
 </style>

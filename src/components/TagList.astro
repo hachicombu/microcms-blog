@@ -1,7 +1,30 @@
 ---
-import { getAllTags } from "../library/microcms";
+import { TagType, getAllTags } from "../library/microcms";
+import Tag from "./Tag.astro";
 
-interface Props {}
+const allTags = await getAllTags({ fields: ["id", "name"] });
 ---
 
 <!-- Footer上のタグ一覧 -->
+<div class="footer__tag-list">
+  <p>Tag</p>
+  <div>
+    {allTags.contents.map((tag: TagType) => <Tag tag={tag} isLink />)}
+  </div>
+</div>
+
+<style lang="scss">
+  p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 28px;
+      background-color: #000;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+</style>
