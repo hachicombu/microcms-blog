@@ -3,10 +3,19 @@ import Card from "./Card.astro";
 import { getBlogs } from "../library/microcms";
 
 const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"] });
-
-// const {blogs} = Astro.props;
 ---
 
 <main>
   <Card blogs={blogs} />
 </main>
+<style>
+  main {
+    max-width: 1080px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 128px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 24px;
+  }
+</style>

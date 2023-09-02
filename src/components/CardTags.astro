@@ -1,15 +1,14 @@
 ---
-import { Tag } from "../library/microcms";
+import { TagType } from "../library/microcms";
+import Tag from "./Tag.astro";
 const { blog } = Astro.props;
 ---
 
 <!-- Card / BlogDetailのタグリスト -->{
   blog.tag && (
     <div>
-      {blog.tag.map((item: Tag) => (
-        <span>
-          <a href={`/tags/${item.id}`}>{item.name}</a>
-        </span>
+      {blog.tag.map((item: TagType) => (
+        <Tag tag={item} />
       ))}
     </div>
   )

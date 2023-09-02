@@ -14,15 +14,22 @@ const { blogs } = Astro.props;
 
       return (
         <article>
-          <img width="1200" height="630" src={imageUrl} alt="" />
-          <h2>
-            <a href={`/${blog.id}`}>{blog.title}</a>
-          </h2>
-          <p>
-            <time datetime={blog.publishedAt}>{date}</time>
-          </p>
+          <div class="article__img">
+            <a href={`/${blog.id}`}>
+              <img width="1200" height="630" src={imageUrl} />
+            </a>
+          </div>
 
-          <CardTags blog={blog} />
+          <div class="article__text">
+            <p>
+              <time datetime={blog.publishedAt}>{date}</time>
+            </p>
+
+            <CardTags blog={blog} />
+            <h2>
+              <a href={`/${blog.id}`}>{blog.title}</a>
+            </h2>
+          </div>
         </article>
       );
     })
@@ -31,43 +38,61 @@ const { blogs } = Astro.props;
   )
 }
 
-<style>
-  .link-card {
-    list-style: none;
+<style lang="scss">
+  .article__img {
+    width: 340px;
+    height: 230px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      background: linear-gradient(45deg, #d8ffff, #87e7ff);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transition: opacity, 0.25s;
+      width: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    &:hover::before {
+      opacity: 0.1;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform, 0.25s;
+    }
+  }
+
+  .article__text {
+    margin-top: 12px;
     display: flex;
-    padding: 1px;
-    background-color: #23262d;
-    background-image: none;
-    background-size: 400%;
-    border-radius: 7px;
-    background-position: 100%;
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    gap: 2px;
+    & p {
+      font-size: 12px;
+    }
   }
-  .link-card > a {
-    width: 100%;
-    text-decoration: none;
-    line-height: 1.4;
-    padding: calc(1.5rem - 1px);
-    border-radius: 8px;
-    color: white;
-    background-color: #23262d;
-    opacity: 0.8;
-  }
+
   h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  p {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-  }
-  .link-card:is(:hover, :focus-within) {
-    background-position: 0;
-    background-image: var(--accent-gradient);
-  }
-  .link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--accent-light));
+    font-size: 18px;
+    font-weight: bold;
+
+    @include mq(md) {
+      font-size: 20px;
+    }
   }
 </style>

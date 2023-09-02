@@ -6,7 +6,7 @@ const client = createClient({
 });
 
 //型定義
-export type Tag = {
+export type TagType = {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -30,7 +30,7 @@ export type Blog = {
   title: string;
   content: string;
   eyecatch: Eyecatch[];
-  tag: Tag[];
+  tag: TagType[];
 };
 export type BlogResponse = {
   totalCount: number;
