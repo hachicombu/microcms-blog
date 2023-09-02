@@ -24,7 +24,9 @@ const { title, isTop } = Astro.props;
   </head>
   <body>
     <header>
-      {isTop ? <h1>Hachico Log</h1> : <p>Hachico Log</p>}
+      <a href="/">
+        {isTop ? <h1>Hachico Log</h1> : <p>Hachico Log</p>}
+      </a>
     </header>
     <slot />
     <footer>
