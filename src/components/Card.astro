@@ -13,24 +13,22 @@ const { blogs } = Astro.props;
       const date = setDateFormat(blog);
 
       return (
-        <article>
-          <div class="article__img">
-            <a href={`/${blog.id}`}>
+        <a href={`/${blog.id}`}>
+          <article>
+            <div class="article__img">
               <img width="1200" height="630" src={imageUrl} />
-            </a>
-          </div>
+            </div>
 
-          <div class="article__text">
-            <p class="article__date">
-              <time datetime={blog.publishedAt}>{date}</time>
-            </p>
+            <div class="article__text">
+              <p class="article__date">
+                <time datetime={blog.publishedAt}>{date}</time>
+              </p>
 
-            <CardTags blog={blog} />
-            <h2>
-              <a href={`/${blog.id}`}>{blog.title}</a>
-            </h2>
-          </div>
-        </article>
+              <CardTags blog={blog} />
+              <h2>{blog.title}</h2>
+            </div>
+          </article>
+        </a>
       );
     })
   ) : (
@@ -94,7 +92,7 @@ const { blogs } = Astro.props;
       letter-spacing: 0.02em;
     }
     & time::before {
-      content: url("/assets/clock.svg");
+      content: url("/assets/icon-clock.svg");
       display: inline-block;
       vertical-align: middle;
       margin-right: 2px;
