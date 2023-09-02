@@ -14,7 +14,8 @@
 
 /* code: 後で確認 */
 code {
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  background-color: red; */
 }
 
 html {
@@ -123,7 +124,7 @@ button {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  *font-size: 100%;
+  font-size: 100%;
   border-radius: 0;
   border: none;
   appearance: none;

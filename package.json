@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "astro": "^2.10.14",
+    "cheerio": "^1.0.0-rc.12",
+    "highlight.js": "^11.8.0",
     "microcms-js-sdk": "^2.5.0",
     "sass": "^1.66.1"
   }

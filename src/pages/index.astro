@@ -1,10 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TopMain from "../components/TopMain.astro";
+import { getBlogs } from "../library/microcms";
+
+const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"] });
 ---
 
 <Layout title="Top" isTop>
-  <TopMain />
+  <TopMain blogs={blogs} />
 </Layout>
 
 <style></style>

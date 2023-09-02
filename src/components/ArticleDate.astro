@@ -1,0 +1,26 @@
+---
+import { setDateFormat } from "../library/common";
+
+const { blog } = Astro.props;
+const date = setDateFormat(blog);
+---
+
+<p class="article__date">
+  <time datetime={blog.publishedAt}>{date}</time>
+</p>
+
+<style lang="scss">
+  .article__date {
+    font-size: 14px;
+
+    & time {
+      letter-spacing: 0.02em;
+    }
+    & time::before {
+      content: url("/assets/icon-clock.svg");
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+  }
+</style>

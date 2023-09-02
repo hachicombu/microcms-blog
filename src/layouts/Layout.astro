@@ -1,5 +1,4 @@
 ---
-// import Footer from "./Footer.astro";
 import TagList from "../components/TagList.astro";
 import Sns from "../components/Sns.astro";
 
@@ -19,6 +18,7 @@ const { title, isTop } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/post-style.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -45,6 +45,7 @@ const { title, isTop } = Astro.props;
     display: grid;
     place-items: center;
     background-color: antiquewhite;
+    box-shadow: 0 0 6px -2px #777;
   }
   h1,
   .header__logo {

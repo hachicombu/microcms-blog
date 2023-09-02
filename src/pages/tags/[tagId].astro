@@ -1,12 +1,7 @@
 ---
 import { getAllTags, getBlogs } from "../../library/microcms";
-import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
-
-interface Props {
-  title: string;
-  tagName: string;
-}
+import TopMain from "../../components/TopMain.astro";
 
 export async function getStaticPaths() {
   // 全タグを取得
@@ -31,5 +26,5 @@ const blogs = filteredPosts;
 
 <Layout title={`${tagName}ブログ一覧`}>
   <h1>{tagName}ブログ一覧</h1>
-  <Card blogs={blogs} />
+  <TopMain blogs={blogs} />
 </Layout>

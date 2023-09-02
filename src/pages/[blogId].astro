@@ -2,6 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import { getBlogs, getBlogDetail } from "../library/microcms";
 import { getEyecatch, setDateFormat } from "../library/common";
+import ArticleDate from "../components/ArticleDate.astro";
+import CardTags from "../components/CardTags.astro";
+// syntax highlight
+import { load } from "cheerio";
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark-dimmed.css";
 
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
@@ -17,32 +23,54 @@ const blog = await getBlogDetail(blogId);
 
 const imageUrl = getEyecatch(blog);
 const date = setDateFormat(blog);
+
+// cheerioでコードブロックを抜き出し、シンタックスハイライトを適用
+const $ = load(blog.content);
+$("pre code").each((_, elm) => {
+  const result = hljs.highlightAuto($(elm).text());
+  $(elm).html(result.value);
+  $(elm).addClass("hljs");
+});
+blog.content = $.html();
 ---
 
 <Layout title="My first blog with Astro" isTop={false}>
   <main>
-    <img width="1200" height="630" src={imageUrl} />
-    <h1 class="title">{blog.title}</h1>
-    <p>公開日：<time datetime={blog.publishedAt}>{date}</time></p>
-    <div class="post" set:html={blog.content} />
-    {
-      blog.tag && (
-        <div>
-          {blog.tag.map((item) => (
-            <span>
-              <a href={`/tags/${item.id}`}>{item.name}</a>
-            </span>
-          ))}
-        </div>
-      )
-    }
+    <article>
+      <div class="article__data">
+        <ArticleDate blog={blog} />
+        <CardTags blog={blog} />
+        <h1 class="title">{blog.title}</h1>
+      </div>
+      <div class="article__img">
+        <img width="960" height="540" src={imageUrl} />
+      </div>
+      <div class="post" set:html={blog.content} />
+    </article>
   </main>
 </Layout>
 
-<style>
+<style lang="scss">
   main {
-    margin: auto;
-    padding: 1em;
-    max-width: 60ch;
+    max-width: 960px;
+    width: 90%;
+    margin: 60px auto 128px;
+  }
+  .article__data {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  article h1 {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .article__img {
+    margin-bottom: 16px;
+    & img {
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
   }
 </style>

@@ -1,0 +1,40 @@
+/* ブログ記事のスタイル */
+.post {
+  line-height: 1.5;
+}
+.post h2:not([class]) {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 56px 0 32px;
+}
+.post h3:not([class]) {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 28px 0 20px;
+}
+
+.post p:not([class]) {
+  margin: 32px 0;
+}
+
+/* .post code {
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  background: #f1f1f1;
+}
+.post p code {
+  color: #eb5757;
+  padding: 0.24rem;
+}
+
+.post pre {
+} */
+
+.post pre,
+.post p code {
+  font-size: 16px;
+}
+.post p code {
+  color: #eb5757;
+  padding: 0.24rem;
+  background: #f1f1f1;
+}
