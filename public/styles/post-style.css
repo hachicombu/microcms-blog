@@ -1,6 +1,6 @@
 /* ブログ記事のスタイル */
 .post {
-  line-height: 1.5;
+  line-height: 1.8;
 }
 .post h2:not([class]) {
   font-size: 24px;
@@ -17,18 +17,6 @@
   margin: 32px 0;
 }
 
-/* .post code {
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  background: #f1f1f1;
-}
-.post p code {
-  color: #eb5757;
-  padding: 0.24rem;
-}
-
-.post pre {
-} */
-
 .post pre,
 .post p code {
   font-size: 16px;
@@ -37,4 +25,24 @@
   color: #eb5757;
   padding: 0.24rem;
   background: #f1f1f1;
+}
+
+.post p:has(+ pre),
+.post p:has(+ figure) {
+  /* color: red; */
+  margin: 32px 0 10px !important;
+}
+
+.post figure {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.post ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+
+.post strong {
+  font-weight: bold;
 }
