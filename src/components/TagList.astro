@@ -8,7 +8,7 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
 <!-- Footer上のタグ一覧 -->
 <div class="footer__tag-list">
   <p>Tag</p>
-  <div>
+  <div class="tags">
     {allTags.contents.map((tag: TagType) => <Tag tag={tag} isLink />)}
   </div>
 </div>
@@ -26,5 +26,10 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
       vertical-align: middle;
       margin-right: 10px;
     }
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 </style>

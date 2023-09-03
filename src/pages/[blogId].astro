@@ -34,7 +34,7 @@ $("pre code").each((_, elm) => {
 blog.content = $.html();
 ---
 
-<Layout title="My first blog with Astro" isTop={false}>
+<Layout title={blog.title}>
   <main>
     <article>
       <div class="article__data">
@@ -69,6 +69,7 @@ blog.content = $.html();
   .article__img {
     margin-bottom: 16px;
     & img {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       object-fit: cover;
       aspect-ratio: 16 / 9;
     }

@@ -6,10 +6,17 @@ const { blog } = Astro.props;
 
 <!-- Card / BlogDetailのタグリスト -->{
   blog.tag && (
-    <div>
+    <div class="card__tag">
       {blog.tag.map((item: TagType) => (
         <Tag tag={item} />
       ))}
     </div>
   )
 }
+
+<style lang="scss">
+  .card__tag {
+    display: flex;
+    gap: 6px;
+  }
+</style>
