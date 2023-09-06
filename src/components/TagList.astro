@@ -23,6 +23,8 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
   p {
     font-size: 24px;
     margin-bottom: 20px;
+    color: var(--color-font-primary);
+    font-family: var(--font-en);
     &::before {
       content: "";
       display: inline-block;
@@ -31,6 +33,7 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
       background-color: #000;
       vertical-align: middle;
       margin-right: 10px;
+      background-color: var(--color-font-primary);
     }
   }
   .tags {

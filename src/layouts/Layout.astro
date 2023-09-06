@@ -17,6 +17,12 @@ const { title, isTop } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- css -->
     <link rel="stylesheet" href="/styles/reset-style.css" />
     <link rel="stylesheet" href="/styles/post-style.css" />
     <meta name="generator" content={Astro.generator} />
@@ -24,9 +30,11 @@ const { title, isTop } = Astro.props;
   </head>
   <body>
     <header>
-      <a href="/">
-        {isTop ? <h1>Hachico Log</h1> : <p class="header__logo">Hachico Log</p>}
-      </a>
+      <div class="header__inner">
+        <a href="/">
+          {isTop ? <h1>Hachico Blog</h1> : <p class="header__logo">Hachico Blog</p>}
+        </a>
+      </div>
     </header>
     <slot />
     <footer>
@@ -41,17 +49,31 @@ const { title, isTop } = Astro.props;
   </body>
 </html>
 <style lang="scss">
+  html {
+    background: var(--color-bg-secondary);
+    color: var(--color-font-primary);
+    font-family: var(--font-ja);
+  }
   header {
-    display: grid;
-    place-items: center;
-    background-color: antiquewhite;
-    box-shadow: 0 0 6px -2px #777;
+    background-color: var(--color-bg-primary);
+    color: var(--color-font-white);
+  }
+  .header__inner {
+    margin: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+
+    @include mq(sm) {
+      margin: 0 30px;
+    }
   }
   h1,
   .header__logo {
     font-size: 1.6rem;
-    padding: 12px 0;
     letter-spacing: 0.08rem;
+    font-weight: 400;
+    font-family: var(--font-en);
   }
   footer {
     padding-top: 32px;
@@ -71,7 +93,8 @@ const { title, isTop } = Astro.props;
   }
   .footer__copy {
     margin-top: 48px;
-    background: #c9c9d4;
+    background: var(--color-bg-primary);
+    color: var(--color-font-white);
     padding: 24px 0;
     text-align: center;
   }

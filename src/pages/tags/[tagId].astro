@@ -24,7 +24,25 @@ const filteredPosts = await getBlogs({
 const blogs = filteredPosts;
 ---
 
-<Layout title={`${tagName}ブログ一覧`}>
-  <h1>{tagName}ブログ一覧</h1>
+<Layout title={`${tagName}記事一覧`}>
+  <h1>{tagName}</h1>
   <TopMain blogs={blogs} />
 </Layout>
+
+<style lang="scss">
+  h1 {
+    font-family: var(--font-en);
+    margin: 30px auto 0;
+    width: 90%;
+    font-size: 1.6rem;
+    letter-spacing: 0.08rem;
+    font-weight: 400;
+    max-width: 1080px;
+
+    &::before {
+      content: url("/assets/icon-tag-h1.svg");
+      margin-right: 8px;
+      vertical-align: top;
+    }
+  }
+</style>

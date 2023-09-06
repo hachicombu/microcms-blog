@@ -6,7 +6,7 @@ import { getBlogs } from "../library/microcms";
 const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"], orders: "-publishedAt" });
 ---
 
-<Layout title="Top" isTop>
+<Layout title="Hachico BLog" isTop>
   <TopMain blogs={blogs} />
 </Layout>
 

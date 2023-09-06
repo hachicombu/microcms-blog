@@ -1,2 +1,11 @@
-$red: #ff0adf;
-$blue: #0000ff;
+:root {
+  --color-bg-primary: #579bb1;
+  --color-bg-secondary: #fffcf6;
+  --color-bg-green: #bfdeae;
+  --color-border-lightblue: #579bb1;
+  --color-font-primary: #333;
+  --color-font-white: #fffcf6;
+
+  --font-ja: "Noto Sans JP", sans-serif;
+  --font-en: "Montserrat", sans-serif;
+}
