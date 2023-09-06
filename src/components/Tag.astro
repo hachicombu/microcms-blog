@@ -1,13 +1,13 @@
 ---
 import { TagType } from "../library/microcms";
-const { tag, isLink } = Astro.props;
+const { tag } = Astro.props;
 interface Props {
   tag: TagType[];
-  isLink?: boolean;
+  // isLink?: boolean;
 }
 ---
 
-{
+<!-- {
   isLink ? (
     <a href={`/tags/${tag.id}`}>
       <span>{tag.name}</span>
@@ -15,7 +15,10 @@ interface Props {
   ) : (
     <span class="tag-inline">{tag.name}</span>
   )
-}
+} -->
+<a href={`/tags/${tag.id}`}>
+  <span>{tag.name}</span>
+</a>
 
 <style lang="scss">
   a,

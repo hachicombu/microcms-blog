@@ -9,7 +9,7 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
 <div class="footer__tag-list">
   <p>Tag</p>
   <div class="tags">
-    {allTags.contents.map((tag: TagType) => <Tag tag={tag} isLink />)}
+    {allTags.contents.map((tag: TagType) => <Tag tag={tag} />)}
   </div>
 </div>
 

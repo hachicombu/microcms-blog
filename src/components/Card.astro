@@ -12,20 +12,22 @@ const { blogs } = Astro.props;
     blogs.contents.map((blog: Blog) => {
       const imageUrl = getEyecatch(blog);
       return (
-        <a href={`/${blog.id}`}>
-          <article>
+        <article>
+          <a href={`/${blog.id}`}>
             <div class="article__img">
               <img width="1200" height="630" src={imageUrl} />
             </div>
+          </a>
 
-            <div class="article__text">
-              <ArticleDate blog={blog} />
+          <div class="article__text">
+            <ArticleDate blog={blog} />
 
-              <CardTags blog={blog} />
+            <CardTags blog={blog} />
+            <a href={`/${blog.id}`}>
               <h2>{blog.title}</h2>
-            </div>
-          </article>
-        </a>
+            </a>
+          </div>
+        </article>
       );
     })
   ) : (
