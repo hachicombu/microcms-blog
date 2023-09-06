@@ -14,6 +14,12 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
 </div>
 
 <style lang="scss">
+  .footer__tag-list {
+    max-width: 100%;
+    @include mq(md) {
+      max-width: 60%;
+    }
+  }
   p {
     font-size: 24px;
     margin-bottom: 20px;
