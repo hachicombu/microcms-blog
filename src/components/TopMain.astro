@@ -13,7 +13,11 @@ const { blogs } = Astro.props;
     max-width: 1080px;
     width: 90%;
     margin: 0 auto;
-    padding: 92px 0;
+    padding: 48px 0;
+
+    @include mq(md) {
+      padding: 92px 0;
+    }
   }
   .main__inner {
     display: grid;

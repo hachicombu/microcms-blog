@@ -14,11 +14,24 @@ const { title, isTop } = Astro.props;
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Web制作の勉強で新たに知ったこと・学んだことをメモしています" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="apple-touch-icon" href="/webclip.png" />
+
+    <!-- ogp -->
+    <meta property="og:site_name" content="Hachico Blog" />
+    <meta property="og:url" content="https://hachico-web.net" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hachico Blog" />
+    <meta property="og:description" content="Web制作の勉強で新たに知ったこと・学んだことをメモしています" />
+    <meta property="og:image" content="https:/hachico-web.net/ogp.png" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Web制作の勉強で新たに知ったこと・学んだことをメモしています" />
+    <meta name="twitter:image:src" content="https://hachico-web.net/ogp.png" />
     <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
@@ -43,7 +56,7 @@ const { title, isTop } = Astro.props;
         <Sns />
       </div>
       <p class="footer__copy">
-        <small>&copy; 2023 Hachi Web</small>
+        <small>&copy; 2023 Hachico Blog</small>
       </p>
     </footer>
   </body>
@@ -62,7 +75,7 @@ const { title, isTop } = Astro.props;
     margin: 0 5%;
     display: flex;
     justify-content: space-between;
-    padding: 12px;
+    padding: 16px 0;
 
     @include mq(sm) {
       margin: 0 30px;
@@ -95,7 +108,7 @@ const { title, isTop } = Astro.props;
     margin-top: 48px;
     background: var(--color-bg-primary);
     color: var(--color-font-white);
-    padding: 24px 0;
+    padding: 20px 0;
     text-align: center;
   }
 </style>
