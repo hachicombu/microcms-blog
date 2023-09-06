@@ -29,7 +29,6 @@
 
 .post p:has(+ pre),
 .post p:has(+ figure) {
-  /* color: red; */
   margin: 32px 0 10px !important;
 }
 
@@ -38,11 +37,11 @@
   width: 90%;
 }
 
-.post ol {
-  list-style: decimal;
-  padding-left: 40px;
-}
-
 .post strong {
   font-weight: bold;
+}
+
+.post a {
+  color: #1176d4;
+  text-decoration: underline;
 }

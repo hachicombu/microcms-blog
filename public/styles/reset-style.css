@@ -8,8 +8,8 @@ div,
 dl,
 dt,
 dd,
-ul,
-ol,
+/* ul,
+ol, */
 li,
 h1,
 h2,
@@ -56,10 +56,10 @@ var {
   font-weight: normal;
 }
 
-ol,
+/* ol,
 ul {
   list-style: none;
-}
+} */
 
 caption,
 th {
