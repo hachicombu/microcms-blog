@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import TopMain from "../components/TopMain.astro";
 import { getBlogs } from "../library/microcms";
 
-const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"] });
+const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"], orders: "-publishedAt" });
 ---
 
 <Layout title="Top" isTop>

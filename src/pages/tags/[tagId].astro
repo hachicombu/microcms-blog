@@ -17,7 +17,7 @@ const tagName = Astro.props.tagName;
 const filteredPosts = await getBlogs({
   filters: `tag[contains]${tagId}`,
   fields: ["id", "title", "eyecatch", "publishedAt", "tag"],
-  orders: "-publishDate",
+  orders: "-publishedAt",
   limit: 100,
 });
 
