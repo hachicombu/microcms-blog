@@ -34,7 +34,12 @@
 
 .post figure {
   margin: 0 auto;
-  width: 90%;
+}
+
+@media screen and (min-width: 768px) {
+  .post figure {
+    width: 90%;
+  }
 }
 
 .post strong {
