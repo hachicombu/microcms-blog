@@ -1,13 +1,17 @@
 ---
 import TagList from "../components/TagList.astro";
 import Sns from "../components/Sns.astro";
+import { Blog } from "../library/microcms";
 
 interface Props {
   title: string;
   isTop?: boolean;
+  isPage?: boolean;
+  blog?: Blog[];
 }
 
-const { title, isTop } = Astro.props;
+const { title, isTop, isPage, blog } = Astro.props;
+const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
 ---
 
 <!DOCTYPE html>
@@ -25,11 +29,11 @@ const { title, isTop } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Hachico Blog" />
     <meta property="og:description" content="Web制作の勉強で新たに知ったこと・学んだことをメモしています" />
-    <meta property="og:image" content="https:/hachico-web.net/ogp.png" />
+    <meta property="og:image" content={ogpUrl} />
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:description" content="Web制作の勉強で新たに知ったこと・学んだことをメモしています" />
-    <meta name="twitter:image:src" content="https://hachico-web.net/ogp.png" />
+    <meta name="twitter:image:src" content={ogpUrl} />
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
