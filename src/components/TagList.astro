@@ -14,27 +14,11 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
 </div>
 
 <style lang="scss">
-  .footer__tag-list {
-    max-width: 100%;
-    @include mq(md) {
-      max-width: 60%;
-    }
-  }
   p {
     font-size: 24px;
     margin-bottom: 20px;
     color: var(--color-font-primary);
     font-family: var(--font-en);
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 3px;
-      height: 28px;
-      background-color: #000;
-      vertical-align: middle;
-      margin-right: 10px;
-      background-color: var(--color-font-primary);
-    }
   }
   .tags {
     display: flex;

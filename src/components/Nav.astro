@@ -1,0 +1,75 @@
+---
+import TagList from "./TagList.astro";
+---
+
+<!-- menu -->
+<nav>
+  <button id="menu-open" class="btn-menu">
+    <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+      ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+        <rect width="32" height="32" fill="none"></rect>
+        <path d="M6 12H18" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M6 15.5H18" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M6 8.5H18" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g></svg
+    >
+  </button>
+  <div id="menu-panel">
+    <button id="menu-close" class="btn-menu">
+      <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+          <rect width="32" height="32" fill="none"></rect>
+          <path d="M7 17L16.8995 7.10051" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M7 7.00001L16.8995 16.8995" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g></svg
+      >
+    </button>
+    <TagList />
+  </div>
+</nav>
+<!-- /.menu -->
+
+<style lang="scss">
+  .btn-menu {
+    position: fixed;
+    right: 5%;
+    top: 1rem;
+    z-index: 4;
+    transition: 0.4s;
+
+    @include mq(md) {
+      right: 30px;
+    }
+  }
+
+  #menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    padding: 8rem 2rem 2rem;
+    width: max(32vw, 20rem);
+    height: 100vh;
+    background-color: var(--color-bg-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    translate: 100vw;
+  }
+</style>
+<script>
+  const closeBtn = document.querySelector("#menu-close");
+  const openBtn = document.querySelector("#menu-open");
+  const menuPanel = document.querySelector("#menu-panel");
+
+  const menuOptions = {
+    duration: 600,
+    easing: "ease",
+    fill: "forwards",
+  };
+
+  openBtn.addEventListener("click", () => {
+    menuPanel.animate({ translate: ["100vw", 0] }, menuOptions);
+  });
+  closeBtn.addEventListener("click", () => {
+    menuPanel.animate({ translate: [0, "100vw"] }, menuOptions);
+  });
+</script>

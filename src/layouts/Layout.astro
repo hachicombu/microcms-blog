@@ -2,6 +2,7 @@
 import TagList from "../components/TagList.astro";
 import Sns from "../components/Sns.astro";
 import { Blog } from "../library/microcms";
+import Nav from "../components/Nav.astro";
 
 interface Props {
   title: string;
@@ -51,6 +52,7 @@ const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
         <a href="/">
           {isTop ? <h1>Hachico Blog</h1> : <p class="header__logo">Hachico Blog</p>}
         </a>
+        <Nav />
       </div>
     </header>
     <slot />
@@ -71,10 +73,7 @@ const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
     color: var(--color-font-primary);
     font-family: var(--font-ja);
   }
-  header {
-    background-color: var(--color-bg-primary);
-    color: var(--color-font-white);
-  }
+
   .header__inner {
     margin: 0 5%;
     display: flex;
@@ -112,7 +111,7 @@ const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
     margin-top: 48px;
     background: var(--color-bg-primary);
     color: var(--color-font-white);
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
   }
 </style>
