@@ -63,8 +63,12 @@ blog.content = $.html();
     margin-bottom: 16px;
   }
   article h1 {
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 700;
+
+    @include mq(md) {
+      font-size: 26px;
+    }
   }
   .article__img {
     margin-bottom: 16px;

@@ -6,7 +6,7 @@ const allTags = await getAllTags({ fields: ["id", "name"] });
 ---
 
 <!-- Footer上のタグ一覧 -->
-<div class="footer__tag-list">
+<div>
   <p>Tag</p>
   <div class="tags">
     {allTags.contents.map((tag) => <Tag tag={tag} />)}

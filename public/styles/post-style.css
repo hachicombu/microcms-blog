@@ -2,25 +2,27 @@
 .post {
   line-height: 1.8;
 }
+
 .post h2:not([class]) {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   margin: 56px 0 32px;
 }
 .post h3:not([class]) {
   font-size: 20px;
-  font-weight: bold;
-  margin: 28px 0 20px;
+  font-weight: 700;
+  margin: 24px 0 16px;
 }
 
 .post p:not([class]) {
-  margin: 32px 0;
+  margin: 24px 0;
 }
 
 .post pre,
 .post p code {
-  font-size: 16px;
+  font-size: 14px;
 }
+
 .post p code {
   color: #eb5757;
   padding: 0.24rem;
@@ -36,17 +38,34 @@
   margin: 0 auto;
 }
 
-@media screen and (min-width: 768px) {
-  .post figure {
-    width: 90%;
-  }
-}
-
 .post strong {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .post a {
   color: #1176d4;
   text-decoration: underline;
+}
+
+/* PC */
+@media screen and (min-width: 768px) {
+  .post h2:not([class]) {
+    margin: 48px 0 26px;
+  }
+
+  .post h3:not([class]) {
+    margin: 28px 0 20px;
+  }
+
+  .post p:not([class]) {
+    margin: 32px 0;
+  }
+  .post pre,
+  .post p code {
+    font-size: 16px;
+  }
+
+  .post figure {
+    width: 90%;
+  }
 }
