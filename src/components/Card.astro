@@ -2,7 +2,6 @@
 import { Blog } from "../library/microcms";
 import CardTags from "./CardTags.astro";
 import ArticleDate from "./ArticleDate.astro";
-import { getEyecatch } from "../library/common";
 const { blogs } = Astro.props;
 ---
 
@@ -10,12 +9,11 @@ const { blogs } = Astro.props;
   // 配列の中身が１以上ある場合
   blogs.totalCount > 0 ? (
     blogs.contents.map((blog: Blog) => {
-      const imageUrl = getEyecatch(blog);
       return (
         <article>
           <a href={`/${blog.id}`}>
             <div class="article__img">
-              <img width="1200" height="630" src={imageUrl} />
+              <img width="1200" height="630" src={blog.eyecatch.url} />
             </div>
           </a>
 
