@@ -1,9 +1,5 @@
 ---
-import { TagType } from "../library/microcms";
 const { tag } = Astro.props;
-interface Props {
-  tag: TagType[];
-}
 ---
 
 <a href={`/tags/${tag.id}`}>

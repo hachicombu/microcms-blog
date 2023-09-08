@@ -1,5 +1,5 @@
 ---
-import { TagType, getAllTags } from "../library/microcms";
+import { getAllTags } from "../library/microcms";
 import Tag from "./Tag.astro";
 
 const allTags = await getAllTags({ fields: ["id", "name"] });
