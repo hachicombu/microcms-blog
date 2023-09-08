@@ -57,6 +57,7 @@ const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
     </header>
     <slot />
     <footer>
+      <hr />
       <div class="footer__inner">
         <TagList />
         <Sns />
@@ -91,10 +92,15 @@ const ogpUrl = isPage ? blog.eyecatch.url : "https://hachico-web.net/ogp.png";
     font-weight: 400;
     font-family: var(--font-en);
   }
-  footer {
-    padding-top: 32px;
+  footer hr {
+    border: 1px dashed #758492;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 860px;
   }
   .footer__inner {
+    padding-top: 48px;
+
     max-width: 1080px;
     width: 90%;
     margin: 0 auto;
