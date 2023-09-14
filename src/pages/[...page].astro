@@ -2,11 +2,12 @@
 import { getBlogs } from "../library/microcms";
 import Layout from "../layouts/Layout.astro";
 import TopMain from "../components/TopMain.astro";
+import Pagination from "../components/Pagination.astro";
 
 // URL生成
 export const getStaticPaths = async ({ paginate }) => {
   const blogs = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "tag"], orders: "-publishedAt" });
-  return paginate(blogs.contents, { pageSize: 2, props: { blogs: blogs } });
+  return paginate(blogs.contents, { pageSize: 9, props: { blogs: blogs } });
 };
 
 const { page } = Astro.props;
@@ -15,4 +16,5 @@ const blogs = Astro.props;
 
 <Layout title="Hachico BLog" isTop>
   <TopMain blogs={blogs.page.data} />
+  <Pagination page={page} />
 </Layout>
