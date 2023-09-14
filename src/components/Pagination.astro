@@ -1,0 +1,97 @@
+---
+const { page } = Astro.props;
+---
+
+<div class="pagination">
+  <!-- 前ページが存在する場合はPREVリンクを表示する -->
+  {
+    page.url.prev ? (
+      <a href={page.url.prev}>
+        <span class="chevron-left" />
+      </a>
+    ) : null
+  }
+
+  <!-- 現在のページが1でないとき、最初のページ「1」を表示 -->
+  {page.currentPage !== 1 && <a href="/">1</a>}
+
+  <!-- 現在のページ - 最初のページ > 1の時、「...」を表示 -->
+  {page.currentPage - 1 > 1 && <span>&#8230;</span>}
+
+  <!-- 現在のページ -->
+  <a href={page.url.current} class="current">{page.currentPage}</a>
+
+  <!-- 最後のページ - 現在のページ  > 1の時、「...」を表示 -->
+  {page.lastPage - page.currentPage > 1 && <span>&#8230;</span>}
+
+  <!-- 現在のページが最後のページでないとき、lastPageを表示 -->
+  {page.currentPage !== page.lastPage && <a href={`/${page.lastPage}`}>{page.lastPage}</a>}
+  <!-- 次ページが存在する場合はNEXTを表示 -->
+  {
+    page.url.next && (
+      <a href={page.url.next}>
+        <span class="chevron-right" />
+      </a>
+    )
+  }
+</div>
+
+<style lang="scss">
+  .pagination {
+    padding: 48px 0;
+    text-align: center;
+    & a {
+      padding: 8px 12px;
+      color: var(--color-border-lightblue);
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-lightblue);
+      & + a {
+        margin-left: 4px;
+      }
+    }
+    & span {
+      padding: 8px;
+      color: var(--color-border-lightblue);
+      background-color: var(--color-bg-secondary);
+    }
+
+    & .current {
+      color: var(--color-font-white);
+      background-color: var(--color-bg-primary);
+      border: 1px solid var(--color-font-white);
+    }
+    & a:has(.chevron-left),
+    & a:has(.chevron-right) {
+      padding: 8px 10px;
+      margin-right: 4px;
+    }
+    & .chevron-left {
+      display: inline-block;
+      vertical-align: middle;
+      color: var(--color-border-lightblue);
+      line-height: 1;
+      padding: 4px;
+      width: 10px;
+      height: 10px;
+      border: 0.1em solid currentColor;
+      border-left: 0;
+      border-bottom: 0;
+      box-sizing: border-box;
+      transform: translate(25%, -25%) rotate(-135deg);
+    }
+    & .chevron-right {
+      display: inline-block;
+      vertical-align: middle;
+      color: var(--color-border-lightblue);
+      line-height: 1;
+      padding: 4px;
+      width: 10px;
+      height: 10px;
+      border: 0.1em solid currentColor;
+      border-left: 0;
+      border-bottom: 0;
+      box-sizing: border-box;
+      transform: translate(-25%, -25%) rotate(45deg);
+    }
+  }
+</style>
