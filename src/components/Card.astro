@@ -2,13 +2,13 @@
 import { Blog } from "../library/microcms";
 import CardTags from "./CardTags.astro";
 import ArticleDate from "./ArticleDate.astro";
-const { blogs } = Astro.props;
+const { blogs } = Astro.props; // blogs.contents or blogs.page.data
 ---
 
 {
   // 配列の中身が１以上ある場合
-  blogs.totalCount > 0 ? (
-    blogs.contents.map((blog: Blog) => {
+  blogs.length > 0 ? (
+    blogs.map((blog: Blog) => {
       return (
         <article>
           <a href={`/${blog.id}`}>

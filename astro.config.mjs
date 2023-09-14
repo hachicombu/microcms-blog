@@ -12,6 +12,6 @@ export default defineConfig({
     },
   },
   redirects: {
-    "/tags": "/",
+    "/tag": "/",
   },
 });
